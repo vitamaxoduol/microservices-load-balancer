@@ -1,4 +1,5 @@
 from load_balancer.algorithms import RoundRobinAlgorithm
+from logging_monitoring.logging_monitoring import LoggingMonitoring
 
 class LoadBalancer:
     def __init__(self) -> None:
@@ -13,7 +14,7 @@ class LoadBalancer:
         next_server = self.algorithm.get_next_server()
 
         # Log the routing of the request
-        logging_monitoring.log_request(next_server)
+        LoggingMonitoring.log_request(next_server)
 
-        response = {'message': f'Request processed by: {next_server}'}
+        response = f'Request processed by: {next_server}'     
         return {'message': response}
